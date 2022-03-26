@@ -87,7 +87,7 @@ function PreferenceSection({ children }) {
 	return <div className="my-4 text-center">{children}</div>;
 }
 
-function YearSelector({ label, start, setter }) {
+function YearSelector({ start, label, value, setter }) {
 	const yearOptions = useMemo(
 		() =>
 			Array(10)
@@ -105,6 +105,7 @@ function YearSelector({ label, start, setter }) {
 			<PreferenceLabel>{label} Year You're Organizing</PreferenceLabel>
 			<select
 				className="border-2 border-black hover:border-blue-400 focus:border-blue-600 rounded-lg px-2"
+				value={value}
 				onChange={e => setter(parseInt(e.target.value))}
 			>
 				{yearOptions}
