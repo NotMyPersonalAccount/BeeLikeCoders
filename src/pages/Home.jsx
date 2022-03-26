@@ -16,8 +16,8 @@ function Home() {
 			<div className="flex flex-wrap mt-4 md:mt-8">
 				<div className="md:w-8/12 lg:w-7/12">
 					<span className="text-3xl">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqa.
+						A planning tool to help students spread their classes, ensuring they
+						graduate on time while preventing overloading classes
 					</span>
 					<div className="mt-4 lg:mt-8">
 						<Button className="text-4xl">
@@ -26,7 +26,7 @@ function Home() {
 					</div>
 				</div>
 				<div className="md:w-4/12 lg:w-5/12">
-					<img className="mt-8 lg:mt-0" src={background} />
+					<img className="mt-8 lg:mt-0" src={background} alt="" />
 				</div>
 			</div>
 		</div>
