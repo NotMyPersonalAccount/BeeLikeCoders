@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import background from "../media/background.png";
 
@@ -20,9 +21,9 @@ function Home() {
 						graduate on time while preventing overloading classes
 					</span>
 					<div className="mt-4 lg:mt-8">
-						<Button className="text-4xl">
-							Start Now
-						</Button>
+						<Link to="/preferences">
+							<Button className="text-4xl">Start Now</Button>
+						</Link>
 					</div>
 				</div>
 				<div className="md:w-4/12 lg:w-5/12">
