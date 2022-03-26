@@ -24,7 +24,7 @@ function Preferences() {
 					<Link to="/">Courseload</Link>
 				</h1>
 				<div className="flex flex-grow items-center">
-					<img classname="h-auto" src={background} alt="" />
+					<img className="h-auto" src={background} alt="" />
 				</div>
 			</div>
 			<div className="mx-8 my-8 flex flex-col flex-grow items-center justify-center">
@@ -59,10 +59,11 @@ function Preferences() {
 				<PreferenceSection>
 					<YearSelector
 						label="First"
+						value={firstYear}
 						start={new Date().getFullYear()}
 						setter={setFirstYear}
 					/>
-					<YearSelector label="Last" start={firstYear} setter={setLastYear} />
+					<YearSelector label="Last" value={lastYear} start={firstYear} setter={setLastYear} />
 				</PreferenceSection>
 
 				<PreferenceSection>
@@ -87,7 +88,6 @@ function PreferenceSection({ children }) {
 }
 
 function YearSelector({ label, start, setter }) {
-	console.log(start);
 	const yearOptions = useMemo(
 		() =>
 			Array(10)
