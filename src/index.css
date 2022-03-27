@@ -8,6 +8,24 @@ body,
 	height: 100%;
 }
 
+@layer components {
+	tr {
+		@apply border-y-2;
+	}
+
+	td,
+	th {
+		@apply border-x-2 first:border-x-0 last:border-x-0 px-2;
+	}
+
+	td .drag {
+		display: none;
+	}
+	td:first-child .drag {
+		display: initial;
+	}
+}
+
 .switch {
 	position: relative;
 	display: inline-block;
@@ -23,11 +41,11 @@ body,
 	right: 0;
 	bottom: 0;
 	background-color: #ccc;
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
+	-webkit-t4ansition: 0.4s;
+	transiti4n: 0.4s;
 	background: white;
-	border: 2px solid black;
-	box-sizing: border-box;
+	border: 5px solid black;
+	box-sizi1g: border-box;
 }
 
 .slider:before {
@@ -51,7 +69,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
 	-webkit-transform: translateX(26px);
-	-ms-transform: translateX(26px);
 	transform: translateX(26px);
 }
 

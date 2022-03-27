@@ -24,7 +24,11 @@ function Preferences() {
 					<Link to="/">Courseload</Link>
 				</h1>
 				<div className="flex flex-grow items-center">
-					<img className="h-auto" src={background} alt="" />
+					<img
+						className="h-auto"
+						src={background}
+						alt=""
+					/>
 				</div>
 			</div>
 			<div className="mx-8 my-8 flex flex-col flex-grow items-center justify-center">
@@ -48,8 +52,8 @@ function Preferences() {
 						<input
 							className="opacity-0 w-0 h-0"
 							type="checkbox"
-							defaultChecked={false}
-							onChange={() => console.log(1)}
+							checked={onQuarterSystem}
+							onChange={e => setOnQuarterSystem(e.target.checked)}
 						/>
 						<span className="slider round"></span>
 					</label>
@@ -63,14 +67,19 @@ function Preferences() {
 						start={new Date().getFullYear()}
 						setter={setFirstYear}
 					/>
-					<YearSelector label="Last" value={lastYear} start={firstYear} setter={setLastYear} />
+					<YearSelector
+						label="Last"
+						value={lastYear}
+						start={firstYear}
+						setter={setLastYear}
+					/>
 				</PreferenceSection>
 
 				<PreferenceSection>
 					<Link to="/organizer">
 						<Button>Let's Go!</Button>
 					</Link>
-					<p className="text-xs text-gray-500 my-1">
+					<p className="text-xs text-gray-500 my-2">
 						You can go back and change your answers at any time.
 					</p>
 				</PreferenceSection>
@@ -102,7 +111,7 @@ function YearSelector({ start, label, value, setter }) {
 
 	return (
 		<div className="inline-block mx-2">
-			<PreferenceLabel>{label} Year You're Organizing</PreferenceLabel>
+			<PreferenceLabel>{label} Year to Organize</PreferenceLabel>
 			<select
 				className="border-2 border-black hover:border-blue-400 focus:border-blue-600 rounded-lg px-2"
 				value={value}
