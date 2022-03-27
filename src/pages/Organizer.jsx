@@ -29,7 +29,6 @@ function Organizer() {
 						<img className="w-5 h-5 mr-1" src={iconBack} alt="back" />
 						<h2 className="font-bold">Go Back</h2>
 					</Link>
-					{/* <a href="http://pig.aericio.net:3000/organizer" download> */}
 					<div className="flex justify-center mx-4">
 						<img className=" w-7" src={iconExport} alt="export" />
 						<h2 className="font-bold"> Export to PDF</h2>
