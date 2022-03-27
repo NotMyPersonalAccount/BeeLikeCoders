@@ -10,6 +10,7 @@ import { Droppable } from "react-beautiful-dnd";
 import { Draggable } from "react-beautiful-dnd";
 import background from "../media/background2.png";
 import classNames from "classnames";
+import { useState } from "react";
 
 function Organizer() {
 	const { name, onQuarterSystem, firstYear, lastYear } = usePreferenceStore(
@@ -21,7 +22,7 @@ function Organizer() {
 
 	return (
 		<div className="m-4 md:m-8">
-			<div className="flex flex-wrap">
+			<div className="flex flex-wrap ">
 				<h1 className="w-8/12 flex-grow font-bold text-2xl">Courseload</h1>
 				<div className="flex ">
 					<Link to="/preferences" className="flex justify-center mx-4">
@@ -37,11 +38,11 @@ function Organizer() {
 			</div>
 			<div className="m-4 md:m-16">
 				<h1 className="font-bold text-4xl">
-					{name}'s {lastYear - firstYear + 1} Year{" "}
+					{(name ? name + "'s " : "") + (lastYear - firstYear + 1)} Year{" "}
 					{onQuarterSystem ? "Quarter" : "Semester"} Organizer
 				</h1>
 				<p className="my-4 text-md">
-					Enter your courses in the table below. Drag and drop your required
+					Enter your courses in the tables below. Drag and drop your required
 					classes or classes you're interested in taking into this{" "}
 					{onQuarterSystem ? "quarter " : "semester "}
 					organizer below to arrange your courseload!
@@ -73,7 +74,9 @@ function Organizer() {
 															{...provided.dragHandleProps}
 														>
 															{snapshot.isDragging ? (
-																unscheduledClass.name
+																<span className="w-2/12">
+																	{unscheduledClass.name}
+																</span>
 															) : (
 																<UnscheduledClassInput
 																	unscheduledClass={unscheduledClass}
@@ -103,11 +106,12 @@ function Organizer() {
 													insertUnscheduledClass({
 														name: "",
 														professor: "",
-														prerequsites: ""
+														prerequisites: ""
 													})
 												}
+												className="cursor-pointer"
 											>
-												New
+												New +
 											</td>
 										</tr>
 									</tbody>
@@ -202,12 +206,11 @@ function Season({ year, season }) {
 								>
 									{provided => (
 										<div
-											className="border-gray border-2 px-2 py-1 my-2 rounded-md"
 											ref={provided.innerRef}
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
 										>
-											{_class.name}
+											<ClassCard _class={_class} />
 										</div>
 									)}
 								</Draggable>
@@ -221,6 +224,24 @@ function Season({ year, season }) {
 	);
 }
 
+function ClassCard({ _class }) {
+	const [toggled, setToggled] = useState(false);
+	return (
+		<div
+			className="border-gray border-2 px-2 py-1 my-2 rounded-md"
+			onClick={() => setToggled(!toggled)}
+		>
+			<p className="font-semibold uppercase">{_class.name}</p>
+			{toggled && (
+				<>
+					<p>Professor: {_class.professor}</p>
+					<p>Pre-requisite: {_class.prerequisites}</p>
+				</>
+			)}
+		</div>
+	);
+}
+
 function UnscheduledClassInput({ unscheduledClass, i, _key }) {
 	const updateUnscheduledClass = useOrganizerStore(
 		state => state.updateUnscheduledClass,
@@ -228,7 +249,7 @@ function UnscheduledClassInput({ unscheduledClass, i, _key }) {
 	);
 	return (
 		<td>
-			<span className="drag">X</span>
+			<span className="drag"> ✥ </span>
 			<div className="inline-block">
 				<input
 					className="w-full outline-none"
