@@ -74,9 +74,7 @@ function Organizer() {
 															{...provided.dragHandleProps}
 														>
 															{snapshot.isDragging ? (
-																<span className="w-2/12">
-																	{unscheduledClass.name}
-																</span>
+																<ClassCard _class={unscheduledClass}/>
 															) : (
 																<UnscheduledClassInput
 																	unscheduledClass={unscheduledClass}
