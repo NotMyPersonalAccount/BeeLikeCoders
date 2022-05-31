@@ -44,7 +44,7 @@ function Organizer() {
 					Enter your courses in the tables below. Drag and drop your required
 					classes or classes you're interested in taking into this{" "}
 					{onQuarterSystem ? "quarter " : "semester "}
-					organizer below to arrange your courseload!
+					organizer below to arrange your courseload.
 				</p>
 				<div className="my-4">
 					<DragDropContext onDragEnd={onDragEnd}>

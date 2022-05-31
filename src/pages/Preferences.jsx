@@ -58,13 +58,13 @@ function Preferences() {
 
 				<PreferenceSection>
 					<YearSelector
-						label="First"
+						label="Starting"
 						value={firstYear}
 						start={new Date().getFullYear()}
 						setter={setFirstYear}
 					/>
 					<YearSelector
-						label="Last"
+						label="Graduating"
 						value={lastYear}
 						start={firstYear}
 						setter={setLastYear}
@@ -107,7 +107,7 @@ function YearSelector({ start, label, value, setter }) {
 
 	return (
 		<div className="inline-block mx-2">
-			<PreferenceLabel>{label} Year to Organize</PreferenceLabel>
+			<PreferenceLabel>{label} Year</PreferenceLabel>
 			<select
 				className="border-2 border-black hover:border-blue-400 focus:border-blue-600 rounded-lg px-2"
 				value={value}
